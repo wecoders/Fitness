@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ttd.fitness.dao.FitnessRecordDAO">
+
+	<select id="findById" resultType="com.ttd.fitness.model.FitnessRecord">
+		SELECT
+		id,
+		title,
+		people_id as peopleId,
+		people_name as peopleName,
+		photo ,
+		note,
+		train_id as trainId,
+		fitness_id as fitnessId,
+		duration,
+		end_time as endTime
+		from fitness_record where id=#{id}
+	</select>
+
+	<select id="findAll" resultType="com.ttd.fitness.model.FitnessRecord">
+		SELECT
+		id,
+		title,
+		people_id as peopleId,
+		people_name as peopleName,
+		photo ,
+		note,
+		train_id as trainId,
+		fitness_id as fitnessId,
+		duration,
+		end_time as endTime
+		from fitness_record order by id desc  limit #{offset},#{limit} ;
+	</select>
+	
+	
+	<select id="findAllByPeople" resultType="com.ttd.fitness.model.FitnessRecord">
+		SELECT
+		id,
+		title,
+		people_id as peopleId,
+		people_name as peopleName,
+		photo ,
+		note,
+		train_id as trainId,
+		fitness_id as fitnessId,
+		duration,
+		end_time as endTime
+		from fitness_record where people_id=#{id} order by id desc  limit #{offset},#{limit} ;
+	</select>
+	
+	
+	<select id="findAllByFitness" resultType="com.ttd.fitness.model.FitnessRecord">
+		SELECT
+		id,
+		title,
+		people_id as peopleId,
+		people_name as peopleName,
+		photo ,
+		note,
+		train_id as trainId,
+		fitness_id as fitnessId,
+		duration,
+		end_time as endTime
+		from fitness_record where fitness_id=#{id}  order by id desc  limit #{offset},#{limit} ;
+	</select>
+	
+	<select id="findAllByTrain" resultType="com.ttd.fitness.model.FitnessRecord">
+		SELECT
+		id,
+		title,
+		people_id as peopleId,
+		people_name as peopleName,
+		photo ,
+		note,
+		train_id as trainId,
+		fitness_id as fitnessId,
+		duration,
+		end_time as endTime
+		from fitness_record where train_id=#{id}  order by id desc  limit #{offset},#{limit} ;
+	</select>
+
+	<insert id="create">
+		insert into fitness_record(title, people_id, people_name, photo, note,
+		train_id, fitness_id, duration, end_time)
+		values(#{title}, #{peopleId}, #{peopleName}, #{photo}, #{note}, #{trainId},
+		#{fitnessId}, #{duration}, #{endTime})
+	</insert>
+
+</mapper>
