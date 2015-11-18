@@ -15,9 +15,9 @@ public class Fitness {
     
     private long forkFrom;
     
-    private int counterType; //计数方式，0：按天, 1：按单次，2：按单次但多个训练
+    private int trainType; //计数方式，0：按天, 1：按单次，2：按单次但多个训练
     
-    private int counterValue; //几天， 1次
+    private int trainTimes; //几天， 单次
     
     private Date createdAt;
 
@@ -79,21 +79,23 @@ public class Fitness {
         this.forkFrom = forkFrom;
     }
 
-    public int getCounterType() {
-        return counterType;
+    public int getTrainType() {
+        return trainType;
     }
 
-    public void setCounterType(int counterType) {
-        this.counterType = counterType;
+    public void setTrainType(int trainType) {
+        this.trainType = trainType;
     }
 
-    public int getCounterValue() {
-        return counterValue;
+    public int getTrainTimes() {
+        return trainTimes;
     }
 
-    public void setCounterValue(int counterValue) {
-        this.counterValue = counterValue;
+    public void setTrainTimes(int trainTimes) {
+        this.trainTimes = trainTimes;
     }
+
+   
     
     
 }

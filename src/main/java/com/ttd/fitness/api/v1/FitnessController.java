@@ -49,13 +49,13 @@ public class FitnessController {
     @POST
     @Path("/create")
     @Consumes("application/x-www-form-urlencoded")
-    public Fitness create(@FormParam("token") String token, @FormParam("title") String title, @FormParam("counterType") int counterType, @FormParam("counterValue") int counterValue) {
+    public Fitness create(@FormParam("token") String token, @FormParam("title") String title, @FormParam("trainType") int trainType, @FormParam("trainTimes") int trainTimes) {
         int peopleId = 0; // loadPeopleByToken(token)
         Fitness fit = new Fitness();
         fit.setTitle(title);
         fit.setPeopleId(peopleId);
-        fit.setCounterType(counterType);
-        fit.setCounterValue(counterValue);
+        fit.setTrainType(trainType);
+        fit.setTrainTimes(trainTimes);
         fit.setCreatedAt(new Date());
         fitnessService.create(fit);
         return fit;

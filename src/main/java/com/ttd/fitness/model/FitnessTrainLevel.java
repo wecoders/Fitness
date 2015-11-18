@@ -22,6 +22,8 @@ public class FitnessTrainLevel {
     private int counterValue; // 计数值，次或秒
 
     private int sleep;
+    
+    private String media;
 
     public long getId() {
         return id;
@@ -93,6 +95,14 @@ public class FitnessTrainLevel {
 
     public void setCounterValue(int counterValue) {
         this.counterValue = counterValue;
+    }
+
+    public String getMedia() {
+        return media;
+    }
+
+    public void setMedia(String media) {
+        this.media = media;
     }
 
 }

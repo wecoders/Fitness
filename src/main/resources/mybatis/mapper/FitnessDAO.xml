@@ -6,14 +6,14 @@
 	<resultMap id="FitnessMap" type="com.ttd.fitness.model.Fitness">
 		<id property="id" column="fitness_id" />
 		<result property="title" column="fitness_title" />
-		<result property="counterType" column="fitness_counter_type" />
-	    <result property="counterValue" column="fitness_counter_value" />
+		<result property="trainType" column="fitness_train_type" />
+	    <result property="trainTimes" column="fitness_train_times" />
 		<collection property="trains" ofType="com.ttd.fitness.model.FitnessTrain">
             <id property="id" column="train_id" />
             <result property="title" column="train_title" />
             <result property="fitnessId" column="train_fitness_id" />
-            <result property="counterValue" column="train_counter_value" />
-            <result property="levelRelation" column="level_relation" />
+            <result property="times" column="train_times" />
+            <result property="relation" column="train_relation" />
             <collection property="levels" ofType="com.ttd.fitness.model.FitnessTrainLevel">
 	            <id property="id" column="level_id" />
 	            <result property="title" column="level_title" />
@@ -23,6 +23,7 @@
 	            <result property="counterValue" column="level_counter_value" />
 	            <result property="sleep" column="level_sleep" />
 	            <result property="trainId" column="level_train_id" />
+	            <result property="media" column="level_media" />
 	            
 	        </collection>
         </collection>
@@ -32,8 +33,8 @@
 		SELECT
 		a.id as id,
 		a.title as title,
-		a.counter_type as counterType,
-		a.counter_value as counterValue
+		a.train_type as trainType,
+		a.train_times as trainTimes
 		FROM fitness a 
 		order by a.id
 	</select>
@@ -42,13 +43,13 @@
 		SELECT
 		a.id as fitness_id,
 		a.title as fitness_title,
-		a.counter_type as fitness_counter_type,
-		a.counter_value as fitness_counter_value,
+		a.train_type as fitness_train_type,
+		a.train_times as fitness_train_times,
 		b.id as train_id,
 		b.title as train_title,
 		b.fitness_id as train_fitness_id,
-		b.counter_value as train_counter_value,
-		b.level_relation as level_relation,
+		b.times as train_times,
+		b.relation as train_relation,
 		c.id as level_id,
 		c.title as level_title,
 		c.level as level_index,
@@ -56,6 +57,7 @@
 		c.counter_type as level_counter_type,
 		c.counter_value as level_counter_value,
 		c.sleep as level_sleep,
+		c.media as level_media,
 		c.train_id as level_train_id
 		FROM fitness a left outer join fitness_train b on a.id = b.fitness_id
 		left outer join fitness_train_level c on b.id = c.train_id and a.id = c.fitness_id
@@ -66,13 +68,13 @@
 		SELECT
 		a.id as fitness_id,
 		a.title as fitness_title,
-		a.counter_type as fitness_counter_type,
-		a.counter_value as fitness_counter_value,
+		a.train_type as fitness_train_type,
+		a.train_times as fitness_train_times,
 		b.id as train_id,
 		b.title as train_title,
 		b.fitness_id as train_fitness_id,
-		b.counter_value as train_counter_value,
-		b.level_relation as level_relation,
+		b.times as train_times,
+		b.relation as train_relation,
 		c.id as level_id,
 		c.title as level_title,
 		c.level as level_index,
@@ -80,6 +82,7 @@
 		c.counter_type as level_counter_type,
 		c.counter_value as level_counter_value,
 		c.sleep as level_sleep,
+		c.media as level_media,
 		c.train_id as level_train_id
 		FROM fitness a left outer join fitness_train b on a.id = b.fitness_id
 		left outer join fitness_train_level c on b.id = c.train_id and a.id = c.fitness_id
@@ -88,8 +91,8 @@
 	</select>
 	
 	<insert id="create" parameterType="com.ttd.fitness.model.Fitness">
-		insert into fitness(title, people_id, counter_type, counter_value)
-		values(#{title}, #{peopleId}, #{counterType}, #{counterValue})
+		insert into fitness(title, people_id, train_type, train_times)
+		values(#{title}, #{peopleId}, #{trainType}, #{trainTimes})
 	</insert>
 
 </mapper>

@@ -2,22 +2,19 @@ package com.ttd.fitness.model;
 
 import java.util.List;
 
-
- 
- 
 public class FitnessTrain {
     private long id;
 
     private String title;
 
     private long fitnessId;
-    
-    private int counterValue; //counterType==0按天：第一天，第..天, counterType==1 or 2,按次=1，
+
+    private int times; // Fitness trainType==0按天：第一天，第..天, trainType==1 or 2,按次=1，
 
     private List<FitnessTrainLevel> levels;
 
-    private int levelRelation; //训练直接的关系 0:顺序  1:或者关系
-    
+    private int relation; // 训练直接的关系 0:顺序 1:或者关系
+
     public long getId() {
         return id;
     }
@@ -50,23 +47,20 @@ public class FitnessTrain {
         this.levels = levels;
     }
 
-   
-
-    public int getLevelRelation() {
-        return levelRelation;
+    public int getRelation() {
+        return relation;
     }
 
-    public void setLevelRelation(int levelRelation) {
-        this.levelRelation = levelRelation;
+    public void setRelation(int relation) {
+        this.relation = relation;
     }
 
-    public int getCounterValue() {
-        return counterValue;
+    public int getTimes() {
+        return times;
     }
 
-    public void setCounterValue(int counterValue) {
-        this.counterValue = counterValue;
+    public void setTimes(int times) {
+        this.times = times;
     }
 
-    
 }

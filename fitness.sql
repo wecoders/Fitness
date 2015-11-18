@@ -21,7 +21,9 @@ alter table fitness add column `counter_type` tinyint(4) default 0;
 alter table fitness add column `counter_value` tinyint(4) default 0;
 alter table fitness add column `fork_from` bigint(20) default 0;
 alter table fitness add column `created_at` datetime DEFAULT NULL;
-s
+
+alter table fitness change column `counter_type` train_type tinyint(4) default 0;
+alter table fitness change column `counter_value` train_times tinyint(4) default 0;
 
 
 CREATE TABLE `fitness_train` (
@@ -35,6 +37,9 @@ CREATE TABLE `fitness_train` (
 alter table fitness_train add column `counter_value` tinyint(4) default 0;
 alter table fitness_train add column `level_relation` tinyint(4) default 0;
 alter table fitness_train add column `created_at` datetime DEFAULT NULL;
+
+alter table fitness change column `counter_value` times tinyint(4) default 0;
+alter table fitness change column `level_relation` relation tinyint(4) default 0;
 
 
 CREATE TABLE `fitness_train_level` (

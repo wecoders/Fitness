@@ -9,6 +9,7 @@ import com.ttd.fitness.api.v1.FitnessRecordController;
 import com.ttd.fitness.api.v1.HelloController;
 import com.ttd.fitness.api.v1.HelloWorldController;
 import com.ttd.fitness.api.v1.PeopleController;
+import com.ttd.fitness.api.v1.QiutuController;
 
 @Component
 //@Configuration
@@ -19,6 +20,6 @@ public class JerseyConfigure extends ResourceConfig {
         register(FitnessController.class);
         register(FitnessRecordController.class);
         register(PeopleController.class);
-//        register(ReverseEndpoint.class);
+        register(QiutuController.class);
     }
 }
